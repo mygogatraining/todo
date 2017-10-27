@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup" class="form">
+    <div class="form-group">
+        <mat-input-container>
+            <input matInput type="text" placeholder="Name" [formControl]="formGroup.controls['name']">
+        </mat-input-container>
+    </div>
+    <div class="form-group">
+        <mat-input-container>
+            <input matInput type="email" placeholder="Email" [formControl]="formGroup.controls['email']">
+        </mat-input-container>
+    </div>
+    <button mat-button mat-raised-button color="primary" (click)="sendForm()" [disabled]="!formGroup.valid">Send</button>
+</form>

@@ -1,0 +1,40 @@
+@import "../_colors.scss";
+@import "../_mixins.scss";
+.alert {
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+%alert {
+    font-size: 16px;
+    font-weight: normal;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 20px;
+    // @include flexbox;
+}
+
+.alert-positive {
+    // @extend .alert;
+    @extend %alert;
+    background: green;
+    // @include transform(scale(0.5))
+}
+
+// .alert-negative {
+//     // @extend .alert;
+//     @extend %alert;
+//     background: red;
+// }
+h2 {
+    color: $grey;
+}

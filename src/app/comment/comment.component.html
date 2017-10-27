@@ -1,0 +1,14 @@
+<ul class="posts">
+    <!-- Display the list of comments inside the li: Use *ngFor="let comment of comments" -->
+    <li class="post" *ngFor="let comment of comments">
+        <div class="post_name">
+            {{ comment?.getName() | toUpperCase }}
+        </div>
+        <div class="post_email">
+            {{ comment?.getEmail() }}
+        </div>
+        <div class="post_body">
+            {{ comment?.getBody() }}
+        </div>
+    </li>
+</ul>
