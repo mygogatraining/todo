@@ -47,7 +47,9 @@ export class TodoComponent implements OnInit {
 
   public addTodo(): void {
     this.items = this.todosFormGroup.get('items') as FormArray;
-    this.items.push(this.createItem());
+    let todo = this.createItem();
+    this.items.push(todo);
+    this.createTodo(todo.controls);
 
   }
 
@@ -159,10 +161,7 @@ export class TodoComponent implements OnInit {
       return;
     }
     this.todoService.deleteTodo(todo.id.value).subscribe(success => {
-      let array = this.items.controls.filter(i => {
-        return i.controls.id.value !== todo.id.value
-      });  
-      this.items.controls = array;
+      this.removeFromItems(todo.id.value);
       console.log(success);
     }, error => {
       console.log(error);
@@ -171,10 +170,8 @@ export class TodoComponent implements OnInit {
 
   public deleteCompletedTodo(todo) {
     this.todoService.deleteTodo(todo.id.value).subscribe(success => {
-      let array = this.completedTasks.controls.filter(i => {
-        return i.controls.id.value !== todo.id.value
-      });  
-      this.completedTasks.controls = array;
+      
+      this.removeFromCompletedTasks(todo.id.value);
       this.getCompletedTodos();
       console.log(success);
     }, error => {

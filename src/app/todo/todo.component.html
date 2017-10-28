@@ -1,7 +1,7 @@
 <div class="todos-container" [ngClass]="theme.color">
     <form [formGroup]="todosFormGroup">
         <ul class="todos">
-            <div [dragula]='"bag-one"' [dragulaModel]='items' formArrayName="items" *ngFor="let item of todosFormGroup.get('items').controls; let i = index;">
+            <div [dragula]='"bag-one"' [dragulaModel]='items' formArrayName="items" *ngFor="let item of items.controls; let i = index;">
                 <li [formGroupName]="i">
                     <mat-checkbox color="primary" class="checkbox" (change)="markCompleted(item?.controls,$event)">
                     </mat-checkbox>

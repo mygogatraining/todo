@@ -21,10 +21,10 @@ import { MediaUrlDirective } from './directive/media-url.directive';
 const routes: Routes = [
   {
     path: '', 
-    redirectTo: '', 
+    redirectTo: 'todo', 
     pathMatch: 'full'
   },{
-    path: '',
+    path: 'home',
     component: AppComponent
   },{
     path: 'user',
