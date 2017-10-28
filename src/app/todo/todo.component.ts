@@ -71,7 +71,7 @@ export class TodoComponent implements OnInit {
         }
       })
       console.log(this.items);
-      this.getCompletedTodos();
+      this.getCompletedTodosCount();
       this.getArchivedTodos();
     }, error => {
       console.log("error occured!");
@@ -93,7 +93,7 @@ export class TodoComponent implements OnInit {
         updateTodoRef.setArchived(false);
         this.undoCompletedTodo(updateTodoRef);
       }
-      this.getCompletedTodos();
+      this.getCompletedTodosCount();
   }
 
   public removeFromItems(id) {
@@ -108,7 +108,7 @@ export class TodoComponent implements OnInit {
       return i.controls.id.value !== id
     });  
     this.completedTasks.controls = array;
-    this.getCompletedTodos();
+    this.getCompletedTodosCount();
   }
 
   public changeTodo(todo) {
@@ -137,7 +137,7 @@ export class TodoComponent implements OnInit {
     this.todoService.updateTodo(todo).subscribe(success => {
       this.completedTasks.push(this.createItem(todo.getTitle(), todo.getCompleted(), todo.getArchived(), todo.getUserId(), todo.getId()));
       this.removeFromItems(todo.getId());
-      this.getCompletedTodos();
+      this.getCompletedTodosCount();
     }, error => {
       console.log(error);
     })
@@ -172,7 +172,7 @@ export class TodoComponent implements OnInit {
     this.todoService.deleteTodo(todo.id.value).subscribe(success => {
       
       this.removeFromCompletedTasks(todo.id.value);
-      this.getCompletedTodos();
+      this.getCompletedTodosCount();
       console.log(success);
     }, error => {
       console.log(error);
@@ -201,7 +201,7 @@ export class TodoComponent implements OnInit {
     })
   }
 
-  public getCompletedTodos() {
+  public getCompletedTodosCount() {
     this.completedTasks.controls ? this.completedTodos = this.completedTasks.controls.length : this.completedTodos = 0;
   }
 
